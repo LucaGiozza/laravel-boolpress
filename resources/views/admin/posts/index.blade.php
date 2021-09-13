@@ -16,13 +16,14 @@
           @foreach($posts as $post)
 
          <tr>
-            <th scope="row">{{$post->id}}</th>
+            <th scope="row">{{$post->id}} </th>
             <td>{{$post->title}}</td>
             <td>
-                <a href="" class="btn btn-primary">Mpstra</a>
+                <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Mostra</a>
                 <a href="" class="btn btn-warning">Modifica</a>
                 <form action="" method="post" class="d-inline-block">
-                   @method('DELETE')
+                     @csrf
+                     @method('DELETE')
                    <input type="submit" value="delete" class="btn btn-danger">
 
                 </form>
