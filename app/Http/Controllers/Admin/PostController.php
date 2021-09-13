@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Post;
+use Illuminate\Support\Str;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -38,7 +40,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        // prendere i dati
         $data = $request->all();
+
+        // creare la nuova istanza
+        $new_post = new Post();
+        $new_post->slug = Str::slug($data['title'], '-');
+       $new_post ->fill($data);
+
+        // salvare i dati
+
+        $new_post->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
