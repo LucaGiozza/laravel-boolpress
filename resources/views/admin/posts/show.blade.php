@@ -13,7 +13,7 @@
       
      </div>
      <div class="card-footer text-muted">
-         2 days ago
+         now
      </div>
   </div>
   <div class="mt-4">

@@ -20,7 +20,7 @@
             <td>{{$post->title}}</td>
             <td>
                 <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">Mostra</a>
-                <a href="" class="btn btn-warning">Modifica</a>
+                <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Mostra</a>
                 <form action="" method="post" class="d-inline-block">
                      @csrf
                      @method('DELETE')
