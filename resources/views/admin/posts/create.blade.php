@@ -30,7 +30,7 @@
     @csrf
   <div class="mb-3">
       <label for="titolo" class="form-label">Titolo</label>
-      <input type="text" class="form-control" id="titolo" name="title" value="{{old('title')}}">
+      <input type="text" class="form-control @error('title') is-invalid @enderror"  id="titolo" name="title" value="{{old('title')}}">
       
   </div>
   <div class="mb-3">
