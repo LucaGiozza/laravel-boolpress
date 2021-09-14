@@ -3,6 +3,15 @@
 @section('content')
   <div class="container">
 
+  @if(session('updated'))
+  <div class="alert alert-success">
+     {{session('updated')}}
+
+  </div>
+
+
+  @endif
+
   <table class="table">
      <thead>
         <tr>
@@ -19,8 +28,8 @@
             <th scope="row">{{$post->id}} </th>
             <td>{{$post->title}}</td>
             <td>
-                <a href="{{route('admin.posts.show', $post->slug)}}" class="btn btn-primary">Mostra</a>
-                <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Mostra</a>
+                <a href="{{route('admin.posts.show', $post->slug)}}" class="btn btn-primary">Show</a>
+                <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Edit</a>
                 <form action="" method="post" class="d-inline-block">
                      @csrf
                      @method('DELETE')

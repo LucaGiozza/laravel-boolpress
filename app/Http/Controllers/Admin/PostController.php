@@ -64,7 +64,7 @@ class PostController extends Controller
      */
 
     //  collegamento con id
-    
+
     // public function show(Post $post)
     // {
     //     return view('admin.posts.show',compact('post'));
@@ -86,9 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -98,9 +98,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        if($data['title'] != $post->title){
+            $data['slug'] = Str::slug($data['title'], '-');
+
+
+        }
+        
+        $post->update($data);
+
+        return redirect()->route('admin.posts.index')->with('updated','Hai modificato con successo l\'elemento ' . $post->id);
+
     }
 
     /**
