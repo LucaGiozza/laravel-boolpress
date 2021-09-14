@@ -43,7 +43,7 @@ class PostController extends Controller
 
         // validazione di dati
          $request->validate([
-             'title' => 'required|max:255',
+             'title' => 'required|max:80',
              'content' => 'required'
 
 
@@ -136,6 +136,14 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+
+        $request->validate([
+            'title' => 'required|max:80',
+            'content' => 'required'
+
+
+        ]);
+
         $data = $request->all();
         if($data['title'] != $post->title){
             $slug = Str::slug($data['title'], '-'); //titolo di esempio

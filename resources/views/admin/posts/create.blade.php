@@ -35,7 +35,7 @@
   </div>
   <div class="mb-3">
      <label for="desc" class="form-label">descrizione</label>
-     <textarea class="form-control" name="content" id="desc" cols="30" rows="10">{{old('content')}}</textarea>
+     <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="desc" cols="30" rows="10">{{old('content')}}</textarea>
      
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
