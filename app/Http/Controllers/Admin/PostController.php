@@ -102,10 +102,36 @@ class PostController extends Controller
     {
         $data = $request->all();
         if($data['title'] != $post->title){
-            $data['slug'] = Str::slug($data['title'], '-');
+            $slug = Str::slug($data['title'], '-'); //titolo di esempio
+
+            $slug_base = $slug; //titolo di esempio
+
+            $slug_si = Post::where('slug', $slug)->first();
+            $conta = 1;
+            while($slug_si){
+
+                // aggiungiamo al post di prima -conta
+
+                $slug = $slug_base . '-' . $conta ;
 
 
+                // controlliamo se il post esiste
+                $slug_si = Post::where('slug', $slug)->first();
+
+
+
+
+                // devo incrementare  il contatore
+
+                $conta++;
+
+
+            }
+
+            $data['slug'] = $slug;
         }
+
+
         
         $post->update($data);
 
