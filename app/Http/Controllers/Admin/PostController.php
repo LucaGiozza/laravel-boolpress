@@ -46,7 +46,35 @@ class PostController extends Controller
 
         // creare la nuova istanza
         $new_post = new Post();
-        $new_post->slug = Str::slug($data['title'], '-');
+
+        $slug = Str::slug($data['title'], '-');
+        $slug_base = $slug;
+
+        $slug_si = Post::where('slug', $slug)->first() ;
+
+        $conta = 1;
+
+        while($slug_si){
+
+            $slug = $slug_base . '-' .$conta;
+
+            $slug_si = Post::where('slug', $slug)->first();
+
+            $conta++;
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+        $new_post->slug = $slug;
        $new_post ->fill($data);
 
         // salvare i dati
