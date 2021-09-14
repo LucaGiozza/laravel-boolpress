@@ -41,6 +41,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+        // validazione di dati
+         $request->validate([
+             'title' => 'required|max:255',
+             'content' => 'required'
+
+
+         ]);
+
         // prendere i dati
         $data = $request->all();
 
@@ -173,8 +181,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('destroyed','Hai eliminato con successo l\'elemento ' . $post->id);
+      
     }
 }
