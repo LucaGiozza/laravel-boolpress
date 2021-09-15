@@ -34,6 +34,26 @@
       
   </div>
   <div class="mb-3">
+      <label for="cat" class="form-label">Categoria</label>
+      <select name="category_id" id="cat">
+
+
+         <option value="">Seleziona una categoria..</option>
+         @foreach($categories as $category)
+          <option value="{{$category->id}}">{{$category->name}}</option> 
+
+          @if($category->id == old('category_id'))selected
+
+          @endif
+
+
+         @endforeach
+
+      </select>
+      
+      
+  </div>
+  <div class="mb-3">
      <label for="desc" class="form-label">descrizione</label>
      <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="desc" cols="30" rows="10">{{old('content')}}</textarea>
      
