@@ -46,7 +46,8 @@ class PostController extends Controller
         // validazione di dati
          $request->validate([
              'title' => 'required|max:80',
-             'content' => 'required'
+             'content' => 'required',
+             'category_id' => 'nullable|exist:categories,id'
 
 
          ]);
@@ -142,7 +143,8 @@ class PostController extends Controller
 
         $request->validate([
             'title' => 'required|max:80',
-            'content' => 'required'
+            'content' => 'required',
+            'category_id' => 'nullable|exist:categories,id'
 
 
         ]);
