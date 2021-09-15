@@ -2,6 +2,8 @@
 @section('content')
 <div class="container">
 
+
+
 @if($errors->any())
 
    <div class="alert alert-danger">
@@ -15,6 +17,7 @@
        @endforeach   
 
        </ul>
+
   
    </div>
 
@@ -27,6 +30,24 @@
       <input type="text" class="form-control" id="titolo" value="{{ old('title', $post->title)}}" name="title">
       
   </div>
+
+  <div class="mb-3">
+      <label for="cat" class="form-label">Category</label>
+      <select class="form-control" name="category_id" id="cat">
+        <option value=""> Scegli una categoria...</option>
+         @foreach($categories as $category)
+      
+           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                 
+         @endforeach
+
+          
+
+      </select>
+      
+  </div>
+
+
   <div class="mb-3">
      <label for="desc" class="form-label">Descrizione</label>
      <textarea class="form-control" name="content" id="desc" cols="30" rows="10"> {{ old('content', $post->content)}}</textarea>
